@@ -54,9 +54,8 @@ done
 # --------------------- Configuration Section -----------------------------------
 # Array of Git repository URLs to deploy and manage
 REPOS=(
-    "https://github.com/yourusername/repo1.git"
-    "https://github.com/yourusername/repo2.git"
-    "https://github.com/yourusername/repo3.git"
+    "https://github.com/abhinav937/Lattice_NanoIce.git"
+    "https://github.com/abhinav937/ssh-push.git"
 )
 
 # Array of additional apt packages to install
