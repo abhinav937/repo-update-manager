@@ -98,7 +98,7 @@ deploy_to_pi() {
   echo "Deploying to ${target:-local Pi}..."
 
   # Check if apt is available and install packages
-  if $ssh_prefix "command -v apt >/dev/null 2>&1"; then
+  if $ssh_prefix "which apt >/dev/null 2>&1"; then
     # Update apt package lists
     $ssh_prefix "sudo apt update" && echo "$(date): Updated apt package lists on ${target:-local Pi}" >> $LOG_FILE
 
@@ -111,7 +111,7 @@ deploy_to_pi() {
   fi
 
   # Create base directory and log file if they don't exist
-  $ssh_prefix "mkdir -p $BASE_DIR && touch $LOG_FILE"
+  $ssh_prefix "sudo mkdir -p $BASE_DIR && sudo chown $USER:$USER $BASE_DIR && touch $LOG_FILE"
 
   # Clone each repository if not already present
   for repo in "${REPOS[@]}"; do
