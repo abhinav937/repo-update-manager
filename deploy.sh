@@ -39,7 +39,7 @@ while [[ $# -gt 0 ]]; do
       echo ""
       echo "Examples:"
       echo "  $0                    # Install to default /env/ directory"
-      echo "  $0 --install /home/pi/repos  # Install to custom directory"
+      echo "  $0 --install /home/$USER/repos  # Install to custom directory"
       echo "  curl -fsSL https://raw.githubusercontent.com/abhinav937/repo-update-manager/main/deploy.sh | bash -s -- --install /env/"
       exit 0
       ;;
@@ -106,7 +106,7 @@ deploy_to_pi() {
     echo "$(date): Installed packages ($packages_to_install) on ${target:-local Pi}" >> $LOG_FILE
 
   # Create base directory and log file if they don't exist
-  $ssh_prefix "sudo mkdir -p $BASE_DIR && sudo chown pi:pi $BASE_DIR && touch $LOG_FILE"
+  $ssh_prefix "sudo mkdir -p $BASE_DIR && sudo chown $USER:$USER $BASE_DIR && touch $LOG_FILE"
 
   # Clone each repository if not already present
   for repo in "${REPOS[@]}"; do
@@ -116,7 +116,7 @@ deploy_to_pi() {
   done
 
   # Create update-my-repos.sh to check for repository updates
-  $ssh_prefix "cat > /home/pi/update-my-repos.sh << 'EOF'
+  $ssh_prefix "cat > /home/$USER/update-my-repos.sh << 'EOF'
 #!/bin/bash
 # Script: update-my-repos.sh
 # Purpose: Checks for updates in configured Git repositories without applying them
@@ -145,7 +145,7 @@ echo \"Run 'upgrade-my-repos' to apply changes.\" | tee -a \$LOG_FILE
 EOF"
 
   # Create upgrade-my-repos.sh to apply updates and run install scripts
-  $ssh_prefix "cat > /home/pi/upgrade-my-repos.sh << 'EOF'
+  $ssh_prefix "cat > /home/$USER/upgrade-my-repos.sh << 'EOF'
 #!/bin/bash
 # Script: upgrade-my-repos.sh
 # Purpose: Pulls latest changes for repositories, clones missing ones, and runs
@@ -169,9 +169,9 @@ done
 EOF"
 
   # Make scripts executable and move to /usr/local/bin for global access
-  $ssh_prefix "chmod +x /home/pi/update-my-repos.sh /home/pi/upgrade-my-repos.sh && \
-               sudo mv /home/pi/update-my-repos.sh /usr/local/bin/update-my-repos && \
-               sudo mv /home/pi/upgrade-my-repos.sh /usr/local/bin/upgrade-my-repos"
+  $ssh_prefix "chmod +x /home/$USER/update-my-repos.sh /home/$USER/upgrade-my-repos.sh && \
+               sudo mv /home/$USER/update-my-repos.sh /usr/local/bin/update-my-repos && \
+               sudo mv /home/$USER/upgrade-my-repos.sh /usr/local/bin/upgrade-my-repos"
 
   # Set up daily cron job at 2 AM if enabled
   if [ "$ENABLE_CRON" = "true" ]; then
