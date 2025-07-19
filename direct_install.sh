@@ -23,7 +23,8 @@ echo ""
 # Step 1: Create base directory
 echo "Step 1: Creating base directory..."
 if [ ! -d "$BASE_DIR" ]; then
-    mkdir -p "$BASE_DIR"
+    sudo mkdir -p "$BASE_DIR"
+    sudo chown $USER:$USER "$BASE_DIR"
     echo "Created directory: $BASE_DIR"
 else
     echo "Directory already exists: $BASE_DIR"
