@@ -62,7 +62,6 @@ REPOS=(
 APT_PACKAGES=(
     "vim"
     "python3"
-    "nginx"
     # Add more packages as needed
 )
 
