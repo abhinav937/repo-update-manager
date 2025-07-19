@@ -13,7 +13,7 @@ INSTALL_DIR="${1:-/env}"
 
 # Download and run the deployment script
 echo "Downloading deployment script..."
-curl -fsSL https://raw.githubusercontent.com/yourusername/repo-update-manager/main/deploy.sh | bash -s -- --install "$INSTALL_DIR"
+curl -fsSL https://raw.githubusercontent.com/abhinav937/repo-update-manager/main/deploy.sh | bash -s -- --install "$INSTALL_DIR"
 
 echo ""
 echo "Installation completed successfully!"

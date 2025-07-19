@@ -40,7 +40,7 @@ while [[ $# -gt 0 ]]; do
       echo "Examples:"
       echo "  $0                    # Install to default /env/ directory"
       echo "  $0 --install /home/pi/repos  # Install to custom directory"
-      echo "  curl -fsSL https://raw.githubusercontent.com/yourusername/repo-update-manager/main/deploy.sh | bash -s -- --install /env/"
+      echo "  curl -fsSL https://raw.githubusercontent.com/abhinav937/repo-update-manager/main/deploy.sh | bash -s -- --install /env/"
       exit 0
       ;;
     *)

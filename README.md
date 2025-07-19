@@ -19,7 +19,7 @@ A powerful automation tool for deploying and managing Git repositories on Raspbe
 The fastest way to get started - just run this command on your Raspberry Pi:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yourusername/repo-update-manager/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/abhinav937/repo-update-manager/main/install.sh | bash
 ```
 
 This will:
@@ -35,14 +35,14 @@ This will:
 curl -fsSL https://raw.githubusercontent.com/yourusername/repo-update-manager/main/install.sh | bash
 
 # Or install to custom directory
-curl -fsSL https://raw.githubusercontent.com/yourusername/repo-update-manager/main/install.sh | bash -s /home/pi/repos
+curl -fsSL https://raw.githubusercontent.com/abhinav937/repo-update-manager/main/install.sh | bash -s /home/pi/repos
 ```
 
 ### Manual Installation
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/repo-update-manager.git
+git clone https://github.com/abhinav937/repo-update-manager.git
 cd repo-update-manager
 ```
 
@@ -60,9 +60,9 @@ Edit the configuration section in `deploy.sh`:
 ```bash
 # Git repositories to deploy
 REPOS=(
-    "https://github.com/yourusername/repo1.git"
-    "https://github.com/yourusername/repo2.git"
-    "https://github.com/yourusername/repo3.git"
+    "https://github.com/abhinav937/repo1.git"
+    "https://github.com/abhinav937/repo2.git"
+    "https://github.com/abhinav937/repo3.git"
 )
 
 # Additional apt packages to install
